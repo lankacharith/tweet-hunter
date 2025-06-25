@@ -1,0 +1,240 @@
+/* Tweet Hunter Sidebar Styles */
+
+#tweet-hunter-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: #15202b;
+  border-left: 1px solid #38444d;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#tweet-hunter-sidebar.th-hidden {
+  transform: translateX(100%);
+}
+
+.th-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #38444d;
+  background: #192734;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.th-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.th-toggle {
+  background: #1da1f2;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.th-toggle:hover {
+  background: #1a91da;
+}
+
+.th-content {
+  padding: 16px;
+}
+
+.th-loading,
+.th-no-tweets {
+  text-align: center;
+  color: #8899a6;
+  font-size: 14px;
+  padding: 20px 0;
+}
+
+.th-tweet {
+  background: #192734;
+  border: 1px solid #38444d;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.th-tweet:hover {
+  background: #1e2732;
+  border-color: #1da1f2;
+}
+
+.th-tweet[data-rank="1"] {
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #192734 0%, #1a1a1a 100%);
+}
+
+.th-tweet[data-rank="2"] {
+  border-color: #c0c0c0;
+}
+
+.th-tweet[data-rank="3"] {
+  border-color: #cd7f32;
+}
+
+.th-tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.th-rank {
+  background: #1da1f2;
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.th-tweet[data-rank="1"] .th-rank {
+  background: #ffd700;
+  color: #000;
+}
+
+.th-tweet[data-rank="2"] .th-rank {
+  background: #c0c0c0;
+  color: #000;
+}
+
+.th-tweet[data-rank="3"] .th-rank {
+  background: #cd7f32;
+  color: #fff;
+}
+
+.th-stats {
+  font-size: 12px;
+  color: #8899a6;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.th-tweet-text {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #ffffff;
+  margin-bottom: 12px;
+  word-wrap: break-word;
+}
+
+.th-tweet-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #8899a6;
+}
+
+.th-time {
+  font-style: italic;
+}
+
+.th-link {
+  color: #1da1f2;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.th-link:hover {
+  color: #1a91da;
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #tweet-hunter-sidebar {
+    width: 280px;
+  }
+  
+  .th-tweet {
+    padding: 12px;
+  }
+  
+  .th-tweet-text {
+    font-size: 13px;
+  }
+}
+
+/* Scrollbar styling */
+#tweet-hunter-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+#tweet-hunter-sidebar::-webkit-scrollbar-track {
+  background: #192734;
+}
+
+#tweet-hunter-sidebar::-webkit-scrollbar-thumb {
+  background: #38444d;
+  border-radius: 3px;
+}
+
+#tweet-hunter-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #1da1f2;
+}
+
+/* Animation for new tweets */
+.th-tweet {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading animation */
+.th-loading::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #1da1f2;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+} 
